@@ -5,13 +5,16 @@ export default async function handler(req, res) {
 
   try {
     if (type === "api1") {
-      url = `AIzaSyC0expaSFFwYhDNOS7CvoHuL9FsSHI-a28{process.env.API_KEY_1}`;
+      // Google Places (New API example)
+      url = `https://places.googleapis.com/v1/places:searchText?key=${process.env.GOOGLE_PLACES_NEW_API_KEY}`;
     } 
     else if (type === "api2") {
-      url = `AIzaSyBuYXwgxVqSDjoRntySKJ9jjh-5fZOcrPM{process.env.API_KEY_2}`;
+      // Google Places (Classic API example)
+      url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&key=${process.env.GOOGLE_PLACES_API_KEY}`;
     } 
     else if (type === "api3") {
-      url = `4c70c703ff8755fdc5a8d4c743bae9a30fad2bc22f8a42d1518fd41ded5a2f00{process.env.API_KEY_3}`;
+      // SerpAPI example
+      url = `https://serpapi.com/search.json?q=restaurants&api_key=${process.env.SERPAPI_API_KEY}`;
     } 
     else {
       return res.status(400).json({ error: "Invalid API type" });
